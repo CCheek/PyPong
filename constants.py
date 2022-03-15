@@ -2,7 +2,7 @@
 
 background_color = (0, 0, 0)
 foreground_color = (255, 255, 255)
-size = (700, 500)
+size = (1200, 600)
 step = 10
 left_score = 0
 right_score = 0

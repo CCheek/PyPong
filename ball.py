@@ -21,9 +21,17 @@ class Ball(pygame.sprite.Sprite):
         self.rect.x += self.speed[0]
         self.rect.y += self.speed[1]
 
-    def bounce(self):
-        self.speed[0] = -self.speed[0]
-        self.speed[1] = random.randint(-8, 8)
+    def bounce_left(self):
+        self.speed[0] = abs(self.speed[0] + random.randint(-2, 0))
+        if self.speed[0] >= 10:
+            self.speed[0] = 10
+        self.speed[1] = random.randint(-(self.speed[0]+2), -self.speed[0])
+
+    def bounce_right(self):
+        self.speed[0] = -abs(self.speed[0]+random.randint(0,2))
+        if self.speed[0] <= -10:
+            self.speed[0] = -10
+        self.speed[1] = random.randint(-(self.speed[0]+2), -self.speed[0])
 
     def reset(self):
         self.rect.x = int(constants.size[0]/2)
