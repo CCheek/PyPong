@@ -24,12 +24,12 @@ screen = pygame.display.set_mode(constants.size)
 pygame.display.set_caption("Corey's Pong Game")
 timer = pygame.time.Clock()
 
-right_paddle = Paddle(constants.foreground_color, 10, 600)
+right_paddle = Paddle(constants.foreground_color, 10, 100)
 right_paddle.rect.x = constants.size[0] - 30
 right_paddle.rect.y = int((constants.size[1]-100)/2)
 # Sets the initial position of the paddle to be roughly in the middle of the screen
 
-left_paddle = Paddle(constants.foreground_color, 10, 600)
+left_paddle = Paddle(constants.foreground_color, 10, 100)
 left_paddle.rect.x = 20
 left_paddle.rect.y = int((constants.size[1]-100)/2)
 # Sets the initial position of the paddle to be roughly in the middle of the screen
@@ -44,21 +44,16 @@ all_sprites_list.add(left_paddle)
 all_sprites_list.add(ball)
 
 
-# Functions
-def thine_mother():
-    print("does nothing except print this.")
-
-
 # Main Loop
 while constants.loop:
     if constants.right_paddle_up:
-        right_paddle.moveUp(constants.step)
+        right_paddle.move_up(constants.step)
     elif constants.right_paddle_down:
-        right_paddle.moveDown(constants.step)
+        right_paddle.move_down(constants.step)
     if constants.left_paddle_up:
-        left_paddle.moveUp(constants.step)
+        left_paddle.move_up(constants.step)
     elif constants.left_paddle_down:
-        left_paddle.moveDown(constants.step)
+        left_paddle.move_down(constants.step)
 
     for event in pygame.event.get():  # For all events (click, keyboard, controller, etc..)
         if event.type == pygame.QUIT:  # If user clicked close
@@ -69,16 +64,16 @@ while constants.loop:
             elif event.key == pygame.K_SPACE:  # Pressing the space key will pause the game UNIMPLEMENTED
                 constants.paused = not constants.paused
             elif event.key == pygame.K_UP:
-                right_paddle.moveUp(constants.step)
+                right_paddle.move_up(constants.step)
                 constants.right_paddle_up = True
             elif event.key == pygame.K_DOWN:
-                right_paddle.moveDown(constants.step)
+                right_paddle.move_down(constants.step)
                 constants.right_paddle_down = True
             elif event.key == pygame.K_w:
-                left_paddle.moveUp(constants.step)
+                left_paddle.move_up(constants.step)
                 constants.left_paddle_up = True
             elif event.key == pygame.K_s:
-                left_paddle.moveDown(constants.step)
+                left_paddle.move_down(constants.step)
                 constants.left_paddle_down = True
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_UP:
