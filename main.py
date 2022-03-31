@@ -10,7 +10,7 @@ print("B. Two Players")
 x = input("Please select you mode. Type A or B to choose: ")
 init.init()
 
-if x == "A":
+if x.lower() == "A":
     AI_Pong.mainloop()
-elif x == "B":
+elif x.lower() == "B":
     Two_Player_Pong.mainloop()
